@@ -1,0 +1,5 @@
+Spring Security Configuration Library
+=============
+
+Spring security configuration library provides the necessary Finance service provides the necessary classes for Okta token verification, Single Sign On using Okta Oauth2 and global method security. This library is added as dependency to all services namely [edge-service](/../edge-service/README.md), [finance-service](/../finance-service/README.md) and [data-service](/../data-service/README.md). The security library requires that 
+Okta security parameters **OKTA_CLIENT_ID**, **OKTA_CLIENT_SECRET** and **OKTA_ISSUER_URL** to be passed using corresponding application's spring properties. Follow the [Okta Setup](/../OKTA.md) and copy **OKTA_CLIENT_ID** and **OKTA_CLIENT_SECRET** from Okta Application configuration settings; and **OKTA_ISSUER_URL** from Authorization Server settings into corresponding application's spring properties.

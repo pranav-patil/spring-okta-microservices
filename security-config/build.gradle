@@ -1,0 +1,23 @@
+plugins {
+	id 'java'
+}
+
+group = 'com.emprovise.service'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+ext {
+	springBootVersion = '2.1.5.RELEASE'
+}
+
+dependencies {
+	compile "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
+	compile "org.springframework.boot:spring-boot-starter-security:${springBootVersion}"
+	compile "org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:${springBootVersion}"
+	compile "org.slf4j:slf4j-api"
+	testCompile "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
+}

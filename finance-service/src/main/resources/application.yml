@@ -1,0 +1,36 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: finance-service
+  security:
+    enabled: true
+  main:
+    allow-bean-definition-overriding: true
+  cache:
+    type: NONE
+
+security:
+  oauth2:
+    client:
+      client-id: ${OKTA_CLIENT_ID}
+      client-secret: ${OKTA_CLIENT_SECRET}
+      access-token-uri: ${OKTA_ISSUER_URL}/v1/token
+      user-authorization-uri: ${OKTA_ISSUER_URL}/v1/authorize
+      clientAuthenticationScheme: query
+      scope: openid profile
+      authorization-grant-type: authorization_code
+      useCurrentUri: true
+    resource:
+      # From Authorization Server's metadata
+      token-info-uri: ${OKTA_ISSUER_URL}/v1/token
+      # from your Auth Server's metadata, check .well-known/openid-configuration if not in .well-known/oauth-authorization-server
+      user-info-uri: ${OKTA_ISSUER_URL}/v1/userinfo
+      user-info-authentication-method: header
+      # URI for getting the set of keys that can be used to validate the token.
+      jwk:
+        key-set-uri: ${OKTA_ISSUER_URL}/v1/keys
+      claim: ${OKTA_ISSUER_URL}
+    sso:
+      oktaLogoutUri: ${OKTA_ISSUER_URL}/v1/logout

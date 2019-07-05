@@ -1,0 +1,34 @@
+plugins {
+	id 'org.springframework.boot' version '2.1.5.RELEASE'
+	id 'java'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.emprovise.service'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+ext {
+	springCloudVersion = 'Greenwich.RELEASE'
+	apacheIgniteVersion = '2.7.5'
+}
+
+dependencies {
+	compile project(':security-config')
+	runtime('com.h2database:h2:1.4.197')
+	compile "org.apache.ignite:ignite-slf4j:${apacheIgniteVersion}"
+	compile "org.apache.ignite:ignite-spring-data_2.0:${apacheIgniteVersion}"
+	compile('org.slf4j:slf4j-api')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+	}
+}
